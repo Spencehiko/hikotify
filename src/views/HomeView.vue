@@ -1,6 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import HeaderMenuVue from "@/components/Menus/HeaderMenu.vue";
+import FooterMenuVue from "@/components/Menus/FooterMenu.vue";
+import SideMenuVue from "@/components/Menus/SideMenu.vue";
+import RecentSongsVue from "@/components/Home/RecentSongs.vue";
+import RecommendSongsVue from "@/components/Home/RecommendSongs.vue";
+import PopularSongsVue from "@/components/Home/PopularSongs.vue";
+</script>
 <template>
+    <SideMenuVue />
+    <header>
+        <HeaderMenuVue />
+    </header>
     <main>
-        <h3>HOME!</h3>
+        <RecentSongsVue />
+        <RecommendSongsVue />
+        <PopularSongsVue />
     </main>
+    <footer>
+        <FooterMenuVue />
+    </footer>
 </template>
