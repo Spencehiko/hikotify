@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomePage from "../pages/HomePage.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -7,7 +7,17 @@ const router = createRouter({
         {
             path: "/",
             name: "home",
-            component: HomeView,
+            component: HomePage,
+        },
+        {
+            path: "/search",
+            name: "search",
+            component: () => import("../pages/HomePage.vue"),
+        },
+        {
+            path: "/collection",
+            name: "library",
+            component: () => import("../pages/HomePage.vue"),
         },
     ],
 });

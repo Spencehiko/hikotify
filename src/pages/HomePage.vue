@@ -7,16 +7,20 @@ import RecommendSongsVue from "@/components/Home/RecommendSongs.vue";
 import PopularSongsVue from "@/components/Home/PopularSongs.vue";
 </script>
 <template>
-    <SideMenuVue />
-    <header>
-        <HeaderMenuVue />
-    </header>
-    <main>
-        <RecentSongsVue />
-        <RecommendSongsVue />
-        <PopularSongsVue />
-    </main>
-    <footer>
-        <FooterMenuVue />
-    </footer>
+    <div class="flex flex-row max-h-screen">
+        <SideMenuVue />
+        <div class="flex flex-col">
+            <header>
+                <HeaderMenuVue />
+            </header>
+            <main>
+                <RecentSongsVue />
+                <RecommendSongsVue />
+                <PopularSongsVue />
+            </main>
+            <footer>
+                <FooterMenuVue />
+            </footer>
+        </div>
+    </div>
 </template>
