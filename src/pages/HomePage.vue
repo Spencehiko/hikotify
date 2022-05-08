@@ -9,7 +9,7 @@ import PopularSongsVue from "@/components/Home/PopularSongs.vue";
 <template>
     <div class="flex flex-row max-h-screen">
         <SideMenuVue />
-        <div class="flex flex-col">
+        <div class="flex flex-col w-full">
             <header>
                 <HeaderMenuVue />
             </header>
