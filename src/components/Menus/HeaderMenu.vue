@@ -1,4 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const messages = [
+    "Good Night",
+    "Good Morning",
+    "Good Afternoon",
+    "Good Evening",
+];
+const time = new Date().getHours();
+const message = messages[Math.floor(time / 6)];
+</script>
 <template>
     <div class="flex flex-row p-4">
         <div class="my-auto">
@@ -19,4 +28,5 @@
             <span class="p-2">&#9660;</span>
         </div>
     </div>
+    <h2 class="pl-4 mt-4 text-4xl font-bold">{{ message }}</h2>
 </template>

@@ -4,6 +4,7 @@ module.exports = {
         extend: {
             colors: {
                 primary: "#1DB954",
+                background: "#121212",
                 gray: {
                     dark: "rgba(0, 0, 0, 0.8)",
                     light: "#282828",

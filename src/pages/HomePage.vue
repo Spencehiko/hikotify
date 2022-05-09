@@ -10,7 +10,7 @@ import PopularSongsVue from "@/components/Home/PopularSongs.vue";
     <div class="flex flex-row max-h-screen">
         <SideMenuVue />
         <div class="flex flex-col w-full">
-            <header>
+            <header class="bg-gradient-to-b from-indigo-700 to-background">
                 <HeaderMenuVue />
             </header>
             <main>

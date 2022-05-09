@@ -3,9 +3,5 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-    <RouterView />
+    <RouterView class="text-white bg-background min-h-screen text-base" />
 </template>
-
-<style>
-@import "@/assets/base.css";
-</style>
