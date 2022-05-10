@@ -2,6 +2,10 @@
 import sidemenu from "@/components/Menus/sidemenu.json";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
+import { useStore } from "@/stores/index";
+
+const store = useStore();
+const { albums } = store;
 
 let route = ref(useRoute());
 </script>
@@ -37,6 +41,41 @@ let route = ref(useRoute());
                         }"
                     ></div>
                     <span class="font-semibold my-auto text-xl">{{
+                        item.name
+                    }}</span>
+                </div>
+            </router-link>
+        </div>
+        <hr class="my-5" />
+        <div class="flex flex-col justify-center items-center">
+            <router-link
+                to="/liked-songs"
+                class="w-full flex flex-row cursor-pointer my-1 p-2 rounded-md"
+            >
+                <div class="flex justify-start w-full items-center">
+                    <img
+                        src="liked.png"
+                        alt="Liked"
+                        class="inline-block w-10 h-10 mr-3"
+                    />
+                    <span class="font-semibold my-auto text-md"
+                        >Liked Songs</span
+                    >
+                </div>
+            </router-link>
+            <router-link
+                :to="'/albums/' + item.id"
+                v-for="(item, index) in albums"
+                :key="index"
+                class="w-full flex flex-row cursor-pointer my-1 p-2 rounded-md"
+            >
+                <div class="flex justify-start w-full items-center">
+                    <img
+                        :src="'album-covers/' + item.image"
+                        alt="Logo"
+                        class="inline-block w-10 h-10 mr-3"
+                    />
+                    <span class="font-semibold my-auto text-md">{{
                         item.name
                     }}</span>
                 </div>

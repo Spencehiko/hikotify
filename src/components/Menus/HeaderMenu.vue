@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// import { storeToRefs } from "pinia";
 import { useStore } from "@/stores/index";
 
 const store = useStore();
