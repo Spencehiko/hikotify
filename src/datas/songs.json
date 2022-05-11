@@ -3,7 +3,7 @@
         "id": 1,
         "albumId": 1,
         "name": "Without Me",
-        "length": 290,
+        "duration": 290,
         "isLiked": true,
         "songPath": "without-me.mp3"
     },
@@ -11,7 +11,7 @@
         "id": 2,
         "albumId": 1,
         "name": "'Till I Collapse",
-        "length": 297,
+        "duration": 297,
         "isLiked": false,
         "songPath": "till-i-collapse.mp3"
     },
@@ -19,7 +19,7 @@
         "id": 3,
         "albumId": 2,
         "name": "The Real Slim Shady",
-        "length": 284,
+        "duration": 284,
         "isLiked": true,
         "songPath": "the-real-slim-shady.mp3"
     },
@@ -27,7 +27,7 @@
         "id": 4,
         "albumId": 3,
         "name": "Montero",
-        "length": 137,
+        "duration": 137,
         "isLiked": true,
         "songPath": "montero.mp3"
     },
@@ -35,7 +35,7 @@
         "id": 5,
         "albumId": 3,
         "name": "Industry Baby",
-        "length": 212,
+        "duration": 212,
         "isLiked": true,
         "songPath": "industry-baby.mp3"
     },
@@ -43,7 +43,7 @@
         "id": 6,
         "albumId": 4,
         "name": "Master of Puppets",
-        "length": 515,
+        "duration": 515,
         "isLiked": true,
         "songPath": "master-of-puppets.mp3"
     },
@@ -51,7 +51,7 @@
         "id": 7,
         "albumId": 4,
         "name": "Battery",
-        "length": 312,
+        "duration": 312,
         "isLiked": true,
         "songPath": "battery.mp3"
     },
@@ -59,7 +59,7 @@
         "id": 8,
         "albumId": 5,
         "name": "Hardwired",
-        "length": 189,
+        "duration": 189,
         "isLiked": true,
         "songPath": "hardwired.mp3"
     },
@@ -67,7 +67,7 @@
         "id": 9,
         "albumId": 5,
         "name": "Moth Into Flame",
-        "length": 350,
+        "duration": 350,
         "isLiked": true,
         "songPath": "moth-into-flame.mp3"
     },
@@ -75,7 +75,7 @@
         "id": 10,
         "albumId": 6,
         "name": "Platonik",
-        "length": 204,
+        "duration": 204,
         "isLiked": true,
         "songPath": "platonik.mp3"
     },
@@ -83,7 +83,7 @@
         "id": 11,
         "albumId": 6,
         "name": "Paranoya",
-        "length": 166,
+        "duration": 166,
         "isLiked": true,
         "songPath": "paranoya.mp3"
     }
