@@ -18,12 +18,14 @@ interface Album {
 
 interface Song {
     id: number;
-    albumId: number;
-    albumName?: string | any;
     title: string;
     duration: number;
-    isLiked: boolean;
+    albumId: number;
+    albumName?: string;
+    imgPath?: string;
     songPath: string;
+    artistName?: string;
+    isLiked: boolean;
 }
 
 export const useStore = defineStore({
@@ -52,6 +54,10 @@ export const useStore = defineStore({
                     ...element,
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     albumName: (this as any).getAlbumName(element.albumId),
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    imgPath: (this as any).getAlbumImage(element.albumId),
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    artistName: (this as any).getArtistName(element.albumId),
                 }))
                 .sort((a, b) => {
                     if (this.sortBy === "title") {
@@ -85,6 +91,24 @@ export const useStore = defineStore({
                 (album: Album) => album.id === (albumId as number)
             );
             return album ? album.name : "";
+        },
+        getAlbumImage(albumId: number): string {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const album = (this as any).albums.find(
+                (album: Album) => album.id === (albumId as number)
+            );
+            return album ? album.image : "";
+        },
+        getArtistName(albumId: number): string {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const album = (this as any).albums.find(
+                (album: Album) => album.id === (albumId as number)
+            );
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const artist = (this as any).artists.find(
+                (artist: Artist) => artist.id === (album.artistId as number)
+            );
+            return artist ? artist.name : "";
         },
         convertDuration(duration: number): string {
             const minutes = Math.floor(duration / 60);

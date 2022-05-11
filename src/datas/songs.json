@@ -68,7 +68,7 @@
         "albumId": 5,
         "title": "Moth Into Flame",
         "duration": 350,
-        "isLiked": true,
+        "isLiked": false,
         "songPath": "moth-into-flame.mp3"
     },
     {
@@ -76,7 +76,7 @@
         "albumId": 6,
         "title": "Platonik",
         "duration": 204,
-        "isLiked": true,
+        "isLiked": false,
         "songPath": "platonik.mp3"
     },
     {

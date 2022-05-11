@@ -10,7 +10,7 @@ const { albums } = store;
 let route = ref(useRoute());
 </script>
 <template>
-    <div class="w-48 h-screen bg-black">
+    <div class="w-48 min-h-screen bg-black">
         <router-link to="/">
             <img
                 src="hikotify-wide.png"
@@ -24,7 +24,7 @@ let route = ref(useRoute());
                 v-for="(item, index) in sidemenu"
                 :key="index"
                 class="w-full flex flex-row cursor-pointer my-1 p-2 rounded-md"
-                :class="{ 'bg-primary': item.route === route.path }"
+                :class="{ 'bg-primary-normal': item.route === route.path }"
             >
                 <div class="flex justify-start w-full">
                     <div

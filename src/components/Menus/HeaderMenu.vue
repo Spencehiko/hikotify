@@ -14,7 +14,7 @@ const time = new Date().getHours();
 const message = messages[Math.floor(time / 6)];
 </script>
 <template>
-    <div class="bg-gradient-to-b from-indigo-700 to-background">
+    <div class="bg-gradient-to-b from-primary-dark to-background">
         <HeaderGenericVue />
         <h2 class="pl-4 mt-4 text-4xl font-bold">{{ message }}</h2>
         <div class="flex flex-row flex-wrap gap-5 mt-5 p-4">
