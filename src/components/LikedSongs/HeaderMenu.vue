@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 import HeaderGenericVue from "@/components/Generic/HeaderGeneric.vue";
+import { storeToRefs } from "pinia";
+import { useStore } from "@/stores/index";
+
+const store = useStore();
+const { likedSongs } = storeToRefs(store);
 </script>
 <template>
     <div class="bg-gradient-to-b from-indigo-700 to-background">
@@ -9,7 +14,9 @@ import HeaderGenericVue from "@/components/Generic/HeaderGeneric.vue";
             <div class="flex flex-col justify-end">
                 <span class="font-bold text-lg">Playlist</span>
                 <h1 class="font-extrabold text-6xl">Liked Songs</h1>
-                <p class="text-sm mt-2">_hiko_ has liked 300 songs.</p>
+                <p class="text-sm mt-2">
+                    {{ likedSongs.length }} songs are listed here.
+                </p>
             </div>
         </div>
     </div>

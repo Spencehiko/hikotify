@@ -3,22 +3,59 @@ import { storeToRefs } from "pinia";
 import { useStore } from "@/stores/index";
 
 const store = useStore();
-const { likedSongs, sortBy } = storeToRefs(store);
+const { likedSongs, sortBy, searchBy } = storeToRefs(store);
+const { convertDuration, revertLike } = store;
 </script>
 <template>
-    <div class="flex flex-row">
-        <input
-            class="border-2 border-gray-200 rounded-lg p-2"
-            type="text"
-            placeholder="Filter"
-        />
-        <select
-            class="border-2 border-gray-200 rounded-lg p-2"
-            v-model="sortBy"
-        >
-            <option value="title">Title</option>
-            <option value="artist">Artist</option>
-            <option value="album">Album</option>
-        </select>
+    <div class="p-16">
+        <div class="flex flex-row">
+            <input
+                class="border-2 border-gray-200 rounded-lg p-2 text-black outline-none"
+                type="text"
+                placeholder="Search"
+                v-model="searchBy"
+            />
+            <select
+                class="border-2 border-gray-200 rounded-lg p-2 ml-2 text-black outline-none"
+                v-model="sortBy"
+            >
+                <option value="title">TITLE</option>
+                <option value="album">ALBUM</option>
+                <option value="duration">DURATION</option>
+            </select>
+        </div>
+        <table class="w-full mt-5">
+            <thead>
+                <tr>
+                    <th class="text-left">#</th>
+                    <th class="text-left">TITLE</th>
+                    <th class="text-left">ALBUM</th>
+                    <th class="text-left"></th>
+                    <th class="text-right">DURATION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(song, index) in likedSongs" :key="song.id">
+                    <td class="text-left">{{ index + 1 }}</td>
+                    <td class="text-left">{{ song.title }}</td>
+                    <td class="text-left">{{ song.albumName }}</td>
+                    <td>
+                        <button @click="revertLike(song.id)">
+                            <img
+                                :src="
+                                    song.isLiked
+                                        ? 'heart-filled.png'
+                                        : 'heart.png'
+                                "
+                                class="w-8 h-8 p-1"
+                            />
+                        </button>
+                    </td>
+                    <td class="text-right">
+                        {{ convertDuration(song.duration) }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
