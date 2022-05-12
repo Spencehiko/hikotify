@@ -36,6 +36,7 @@ export const useStore = defineStore({
         songs: songs as Song[],
         sortBy: "title" as string,
         searchBy: "" as string,
+        alertMessage: "" as string,
     }),
     getters: {
         albumsOfArtist(artistId): Album[] {
@@ -125,6 +126,13 @@ export const useStore = defineStore({
             if (song) {
                 song.isLiked = !song.isLiked;
             }
+            this.alertShow("Removed from Liked Songs", 2000);
+        },
+        alertShow(message: string, duration: number): void {
+            this.alertMessage = message;
+            setTimeout(() => {
+                this.alertMessage = "";
+            }, duration);
         },
     },
     persist: true,

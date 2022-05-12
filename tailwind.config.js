@@ -7,6 +7,10 @@ module.exports = {
                     normal: "#1DB954",
                     dark: "#0a451f",
                 },
+                secondary: {
+                    normal: "#2E77D0",
+                    dark: "#0a451f",
+                },
                 background: "#121212",
                 gray: {
                     dark: "rgba(0, 0, 0, 0.8)",

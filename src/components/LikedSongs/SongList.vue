@@ -4,7 +4,7 @@ import { useStore } from "@/stores/index";
 
 const store = useStore();
 const { likedSongs, sortBy, searchBy } = storeToRefs(store);
-const { convertDuration, revertLike } = store;
+const { convertDuration, revertLike, alertShow } = store;
 </script>
 <template>
     <div class="m-16">
