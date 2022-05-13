@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import HomePage from "../pages/HomePage.vue";
 import LikedSongs from "../pages/LikedSongs.vue";
+import AlbumPage from "../pages/AlbumPage.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -22,8 +23,13 @@ const router = createRouter({
         },
         {
             path: "/liked-songs",
-            name: "liked songs",
+            name: "liked-songs",
             component: LikedSongs,
+        },
+        {
+            path: "/albums/:albumId",
+            name: "albums",
+            component: AlbumPage,
         },
     ],
 });
