@@ -3,7 +3,7 @@ import { storeToRefs } from "pinia";
 import { useStore } from "@/stores/index";
 
 const store = useStore();
-const { likedSongs, sortBy, searchBy } = storeToRefs(store);
+const { likedSongs, sortBy, searchBy, activeAlbumSongs } = storeToRefs(store);
 const { convertDuration, revertLike, alertShow } = store;
 </script>
 <template>
@@ -35,7 +35,7 @@ const { convertDuration, revertLike, alertShow } = store;
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(song, index) in likedSongs" :key="song.id">
+                <tr v-for="(song, index) in activeAlbumSongs" :key="song.id">
                     <td class="text-left">{{ index + 1 }}</td>
                     <td class="flex flex-row items-center">
                         <img

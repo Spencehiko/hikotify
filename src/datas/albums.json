@@ -5,7 +5,8 @@
         "name": "The Eminem Show",
         "image": "the-eminem-show.jpg",
         "year": 2002,
-        "isFavorite": true
+        "isFavorite": true,
+        "backgroundColor": "red"
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "name": "The Marshall Mathers LP",
         "image": "the-marshall-mathers.jpg",
         "year": 2013,
-        "isFavorite": false
+        "isFavorite": false,
+        "backgroundColor": "yellow"
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "name": "MONTERO",
         "image": "montero.jpg",
         "year": 2021,
-        "isFavorite": true
+        "isFavorite": true,
+        "backgroundColor": "fuchsia"
     },
     {
         "id": 4,
@@ -29,7 +32,8 @@
         "name": "Master of Puppets",
         "image": "master-of-puppets.jpg",
         "year": 1986,
-        "isFavorite": true
+        "isFavorite": true,
+        "backgroundColor": "orange"
     },
     {
         "id": 5,
@@ -37,7 +41,8 @@
         "name": "Hardwired To Self-Destruct",
         "image": "hardwired-to-self-destruct.jpg",
         "year": 2016,
-        "isFavorite": true
+        "isFavorite": true,
+        "backgroundColor": "cyan"
     },
     {
         "id": 6,
@@ -45,6 +50,7 @@
         "name": "Aşkın Izdırabını",
         "image": "askin-izdirabini.jpg",
         "year": 2012,
-        "isFavorite": true
+        "isFavorite": true,
+        "backgroundColor": "pink"
     }
 ]

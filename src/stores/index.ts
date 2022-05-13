@@ -14,6 +14,7 @@ interface Album {
     image: string;
     year: number;
     isFavorite: boolean;
+    backgroundColor: string;
 }
 
 interface Song {
@@ -37,6 +38,7 @@ export const useStore = defineStore({
         sortBy: "title" as string,
         searchBy: "" as string,
         alertMessage: "" as string,
+        activeAlbumId: 0 as number,
     }),
     getters: {
         albumsOfArtist(artistId): Album[] {
@@ -82,6 +84,18 @@ export const useStore = defineStore({
         },
         likedSongs(): Song[] {
             return this.songsWithAlbumName.filter((song: Song) => song.isLiked);
+        },
+        activeAlbum(): Album {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            return (this as any).albums.find(
+                (album: Album) => album.id === this.activeAlbumId
+            );
+        },
+        activeAlbumSongs(): Song[] {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            return this.songsWithAlbumName.filter(
+                (song: Song) => song.albumId === (this as any).activeAlbumId
+            );
         },
     },
     actions: {

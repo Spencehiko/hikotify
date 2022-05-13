@@ -4,18 +4,27 @@ import { storeToRefs } from "pinia";
 import { useStore } from "@/stores/index";
 
 const store = useStore();
-const { likedSongs } = storeToRefs(store);
+const { activeAlbum } = storeToRefs(store);
 </script>
 <template>
-    <div class="bg-gradient-to-b from-indigo-700 to-background">
+    <div
+        class="bg-gradient-to-b to-background"
+        :class="['from-' + activeAlbum.backgroundColor + '-700']"
+    >
         <HeaderGenericVue />
         <div class="flex flex-row flex-wrap gap-5 mt-5 p-4">
-            <img src="liked.png" alt="Liked" class="rounded w-60 h-60" />
+            <img
+                :src="'album-covers/' + activeAlbum.image"
+                alt="Liked"
+                class="rounded w-60 h-60"
+            />
             <div class="flex flex-col justify-end">
-                <span class="font-bold text-lg">Playlist</span>
-                <h1 class="font-extrabold text-6xl">Liked Songs</h1>
+                <span class="font-bold text-lg">Album</span>
+                <h1 class="font-extrabold text-5xl">
+                    {{ activeAlbum.name }}
+                </h1>
                 <p class="text-sm mt-2">
-                    {{ likedSongs.length }} songs are listed here.
+                    {{ activeAlbum.year }}
                 </p>
             </div>
         </div>

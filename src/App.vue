@@ -2,6 +2,23 @@
 import { RouterView } from "vue-router";
 import SideMenuVue from "@/components/Menus/SideMenu.vue";
 import AlertGenericVue from "./components/Generic/AlertGeneric.vue";
+import { useRoute } from "vue-router";
+import { watch } from "vue";
+import { storeToRefs } from "pinia";
+import { useStore } from "@/stores/index";
+
+const route = useRoute();
+
+const store = useStore();
+const { activeAlbumId } = storeToRefs(store);
+watch(
+    () => route.params.albumId,
+    (newValue) => {
+        if (newValue) {
+            activeAlbumId.value = parseInt(newValue.toString());
+        }
+    }
+);
 </script>
 
 <template>
