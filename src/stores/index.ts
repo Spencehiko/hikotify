@@ -40,8 +40,7 @@ export const useStore = defineStore({
     }),
     getters: {
         albumsOfArtist(artistId): Album[] {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            return (this as any).albums.filter(
+            return this.albums.filter(
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (album: Album) => album.artistId === (artistId as any)
             );
@@ -87,27 +86,24 @@ export const useStore = defineStore({
     },
     actions: {
         getAlbumName(albumId: number): string {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const album = (this as any).albums.find(
+            const album = this.albums.find(
                 (album: Album) => album.id === (albumId as number)
             );
             return album ? album.name : "";
         },
         getAlbumImage(albumId: number): string {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const album = (this as any).albums.find(
+            const album = this.albums.find(
                 (album: Album) => album.id === (albumId as number)
             );
             return album ? album.image : "";
         },
         getArtistName(albumId: number): string {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const album = (this as any).albums.find(
+            const album = this.albums.find(
                 (album: Album) => album.id === (albumId as number)
             );
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const artist = (this as any).artists.find(
-                (artist: Artist) => artist.id === (album.artistId as number)
+            const artist = this.artists.find(
+                (artist: Artist) =>
+                    artist.id === ((album as Album).artistId as number)
             );
             return artist ? artist.name : "";
         },
@@ -119,8 +115,7 @@ export const useStore = defineStore({
             return `${minutesText}:${secondsText}`;
         },
         revertLike(songId: number): void {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const song = (this as any).songs.find(
+            const song = this.songs.find(
                 (song: Song) => song.id === (songId as number)
             );
             if (song) {
