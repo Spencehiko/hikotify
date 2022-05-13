@@ -92,8 +92,8 @@ export const useStore = defineStore({
             );
         },
         activeAlbumSongs(): Song[] {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             return this.songsWithAlbumName.filter(
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (song: Song) => song.albumId === (this as any).activeAlbumId
             );
         },
@@ -134,8 +134,12 @@ export const useStore = defineStore({
             );
             if (song) {
                 song.isLiked = !song.isLiked;
+                if (!song.isLiked) {
+                    this.alertShow("Removed from Liked Songs", 2000);
+                } else {
+                    this.alertShow("Added to Liked Songs", 2000);
+                }
             }
-            this.alertShow("Removed from Liked Songs", 2000);
         },
         alertShow(message: string, duration: number): void {
             this.alertMessage = message;

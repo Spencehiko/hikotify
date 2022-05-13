@@ -3,8 +3,8 @@ import { storeToRefs } from "pinia";
 import { useStore } from "@/stores/index";
 
 const store = useStore();
-const { likedSongs, sortBy, searchBy, activeAlbumSongs } = storeToRefs(store);
-const { convertDuration, revertLike, alertShow } = store;
+const { sortBy, searchBy, activeAlbumSongs } = storeToRefs(store);
+const { convertDuration, revertLike } = store;
 </script>
 <template>
     <div class="m-16">
