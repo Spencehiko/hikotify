@@ -10,6 +10,7 @@ interface Artist {
 interface Album {
     id: number;
     artistId: number;
+    artistName?: string;
     name: string;
     image: string;
     year: number;
@@ -82,6 +83,13 @@ export const useStore = defineStore({
                 });
             }
             return filteredSongs;
+        },
+        albumWithArtistName(): Album[] {
+            return this.albums.map((element) => ({
+                ...element,
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                artistName: (this as any).getArtistName(element.id),
+            }));
         },
         likedSongs(): Song[] {
             return this.songsWithAlbumName.filter((song: Song) => song.isLiked);

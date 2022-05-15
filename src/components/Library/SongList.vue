@@ -1,0 +1,42 @@
+<script lang="ts" setup>
+import { useStore } from "@/stores/index";
+
+const store = useStore();
+const { albumWithArtistName, likedSongs } = store;
+</script>
+<template>
+    <div class="grid grid-cols-library gap-6 columns-5 p-5">
+        <div
+            class="flex flex-col col-span-2 p-5 rounded bg-gradient-to-br from-blue-600 to-fuchsia-600 cursor-pointer"
+        >
+            <p class="line-clamp-4">
+                <span
+                    v-for="(song, index) in likedSongs"
+                    :key="song.id"
+                    class="contents"
+                >
+                    <span class="font-bold mr-1">{{ song.artistName }}</span>
+                    {{ song.title }}
+                    <span class="mr-1" v-if="index !== likedSongs.length - 1"
+                        >•</span
+                    >
+                </span>
+            </p>
+            <span class="text-2xl font-bold mt-auto">Liked Songs</span>
+            <span>{{ likedSongs.length }} liked songs</span>
+        </div>
+        <div
+            class="flex flex-col gap-2 px-5 py-2 rounded bg-gray-dark hover:bg-gray-lightest cursor-pointer"
+            v-for="album in albumWithArtistName"
+            :key="album.id"
+        >
+            <img
+                :src="`album-covers/${album.image}`"
+                alt="Album"
+                class="rounded w-full h-full"
+            />
+            <span class="font-bold text-xl">{{ album.artistName }}</span>
+            <span class="text-lg">{{ album.year }}</span>
+        </div>
+    </div>
+</template>

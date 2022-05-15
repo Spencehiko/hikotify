@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import HomePage from "../pages/HomePage.vue";
 import LikedSongs from "../pages/LikedSongs.vue";
 import AlbumPage from "../pages/AlbumPage.vue";
+import LibraryPage from "../pages/LibraryPage.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -19,7 +20,7 @@ const router = createRouter({
         {
             path: "/collection",
             name: "library",
-            component: HomePage,
+            component: LibraryPage,
         },
         {
             path: "/liked-songs",
