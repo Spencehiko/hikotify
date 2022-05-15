@@ -39,6 +39,7 @@ export const useStore = defineStore({
         searchBy: "" as string,
         alertMessage: "" as string,
         activeAlbumId: 0 as number,
+        timeOut: 0 as number,
     }),
     getters: {
         albumsOfArtist(artistId): Album[] {
@@ -142,8 +143,9 @@ export const useStore = defineStore({
             }
         },
         alertShow(message: string, duration: number): void {
+            clearTimeout(this.timeOut);
             this.alertMessage = message;
-            setTimeout(() => {
+            this.timeOut = setTimeout(() => {
                 this.alertMessage = "";
             }, duration);
         },

@@ -5,11 +5,21 @@ import { useStore } from "@/stores/index";
 
 const store = useStore();
 const { activeAlbum } = storeToRefs(store);
+const colors: any = {
+    red: "from-red-700",
+    yellow: "from-yellow-700",
+    fuchsia: "from-fuchsia-700",
+    orange: "from-orange-700",
+    green: "from-green-700",
+    cyan: "from-cyan-700",
+    pink: "from-pink-700",
+};
 </script>
 <template>
     <div
-        class="bg-gradient-to-b to-background"
-        :class="['from-' + activeAlbum.backgroundColor + '-700']"
+        :class="`bg-gradient-to-b ${
+            colors[activeAlbum.backgroundColor]
+        } to-background`"
     >
         <HeaderGenericVue />
         <div class="flex flex-row flex-wrap gap-5 mt-5 p-4">
