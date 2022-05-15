@@ -26,7 +26,7 @@ const { albumWithArtistName, likedSongs } = store;
             <span>{{ likedSongs.length }} liked songs</span>
         </div>
         <div
-            class="flex flex-col gap-2 px-5 py-2 rounded bg-gray-dark hover:bg-gray-lightest cursor-pointer"
+            class="flex flex-col gap-2 px-5 py-2 rounded bg-gray-dark hover:bg-gray-lightest cursor-pointer transition-all duration-200"
             v-for="album in albumWithArtistName"
             :key="album.id"
         >

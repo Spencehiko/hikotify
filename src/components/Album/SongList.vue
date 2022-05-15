@@ -38,7 +38,7 @@ const { convertDuration, revertLike } = store;
                 <tr
                     v-for="(song, index) in activeAlbumSongs"
                     :key="song.id"
-                    class="group hover:bg-gray-light"
+                    class="group hover:bg-gray-light transition-all duration-200"
                 >
                     <td class="text-left pl-5 w-11">
                         <span class="group-hover:hidden">{{ index + 1 }}</span>
