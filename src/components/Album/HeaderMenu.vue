@@ -5,6 +5,7 @@ import { useStore } from "@/stores/index";
 
 const store = useStore();
 const { activeAlbum } = storeToRefs(store);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const colors: any = {
     red: "from-red-700",
     yellow: "from-yellow-700",

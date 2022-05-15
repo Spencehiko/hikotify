@@ -28,10 +28,5 @@ module.exports = {
             },
         },
     },
-    safeList: [
-        {
-            pattern: /bg-(red|green|yellow)-700/,
-        },
-    ],
     plugins: [],
 };
