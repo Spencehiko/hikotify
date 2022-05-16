@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import HeaderMenuVue from "@/components/Menus/HeaderMenu.vue";
-import FooterMenuVue from "@/components/Menus/FooterMenu.vue";
 import RecommendedSongsVue from "@/components/Home/RecommendedSongs.vue";
 import GenreSongsVue from "@/components/Home/GenreSongs.vue";
 </script>
@@ -13,8 +12,5 @@ import GenreSongsVue from "@/components/Home/GenreSongs.vue";
             <GenreSongsVue />
             <RecommendedSongsVue />
         </main>
-        <footer>
-            <FooterMenuVue />
-        </footer>
     </div>
 </template>
