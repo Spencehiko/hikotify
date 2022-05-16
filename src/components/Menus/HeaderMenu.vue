@@ -35,14 +35,15 @@ const colors: any = {
         <HeaderGenericVue />
         <h2 class="pl-4 mt-4 text-4xl font-bold">{{ message }}</h2>
         <div class="flex flex-row flex-wrap gap-5 mt-5 p-4">
-            <div
+            <router-link
+                to="/liked-songs"
                 class="w-full-20 flex flex-row items-center bg-gray-lightest h-24 cursor-pointer sm:w-1/2-20 md:w-1/3-20"
                 @mouseover="homePageBackground = 'blue'"
                 @mouseleave="homePageBackground = 'primary'"
             >
                 <img src="liked.png" alt="Liked" class="rounded w-24 h-24" />
                 <span class="font-bold ml-1 p-1">Liked Songs</span>
-            </div>
+            </router-link>
             <router-link
                 :to="'/albums/' + album.id"
                 v-for="(album, index) in favoriteAlbums"

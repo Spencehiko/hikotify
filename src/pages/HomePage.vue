@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import HeaderMenuVue from "@/components/Menus/HeaderMenu.vue";
 import FooterMenuVue from "@/components/Menus/FooterMenu.vue";
-import RecentSongsVue from "@/components/Home/RecentSongs.vue";
-import RecommendSongsVue from "@/components/Home/RecommendSongs.vue";
-import PopularSongsVue from "@/components/Home/PopularSongs.vue";
+import RecommendedSongsVue from "@/components/Home/RecommendedSongs.vue";
+import GenreSongsVue from "@/components/Home/GenreSongs.vue";
 </script>
 <template>
     <div class="flex flex-col w-full">
@@ -11,9 +10,8 @@ import PopularSongsVue from "@/components/Home/PopularSongs.vue";
             <HeaderMenuVue />
         </header>
         <main>
-            <RecentSongsVue />
-            <RecommendSongsVue />
-            <PopularSongsVue />
+            <GenreSongsVue />
+            <RecommendedSongsVue />
         </main>
         <footer>
             <FooterMenuVue />

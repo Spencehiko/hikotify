@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import albums from "@/datas/albums.json";
 import artists from "@/datas/artists.json";
 import songs from "@/datas/songs.json";
+import genres from "@/datas/genres.json";
 
 interface Artist {
     id: number;
@@ -28,6 +29,14 @@ interface Song {
     songPath: string;
     artistName?: string;
     isLiked: boolean;
+    genres: number[];
+}
+
+interface Genre {
+    id: number;
+    name: string;
+    image: string;
+    backgroundColor: string;
 }
 
 export const useStore = defineStore({
@@ -36,10 +45,12 @@ export const useStore = defineStore({
         albums: albums as Album[],
         artists: artists as Artist[],
         songs: songs as Song[],
+        genres: genres as Genre[],
         sortBy: "title" as string,
         searchBy: "" as string,
         alertMessage: "" as string,
         activeAlbumId: 0 as number,
+        activeGenreId: 0 as number,
         timeOut: 0 as number,
         homePageBackground: "primary" as string,
     }),
@@ -107,6 +118,17 @@ export const useStore = defineStore({
                 (song: Song) => song.albumId === (this as any).activeAlbumId
             );
         },
+        activeGenre(): Genre {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            return (this as any).genres.find(
+                (genre: Genre) => genre.id === this.activeGenreId
+            );
+        },
+        activeGenreSongs(): Song[] {
+            return this.songsWithAlbumName.filter((song: Song) =>
+                song.genres.includes(this.activeGenreId)
+            );
+        },
     },
     actions: {
         getAlbumName(albumId: number): string {
@@ -130,6 +152,11 @@ export const useStore = defineStore({
                     artist.id === ((album as Album).artistId as number)
             );
             return artist ? artist.name : "";
+        },
+        getSongsByGenre(genreId: number): Song[] {
+            return this.songs.filter((song: Song) =>
+                song.genres.includes(genreId)
+            );
         },
         convertDuration(duration: number): string {
             const minutes = Math.floor(duration / 60);

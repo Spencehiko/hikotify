@@ -10,12 +10,20 @@ import { useStore } from "@/stores/index";
 const route = useRoute();
 
 const store = useStore();
-const { activeAlbumId } = storeToRefs(store);
+const { activeAlbumId, activeGenreId } = storeToRefs(store);
 watch(
     () => route.params.albumId,
     (newValue) => {
         if (newValue) {
             activeAlbumId.value = parseInt(newValue.toString());
+        }
+    }
+);
+watch(
+    () => route.params.genreId,
+    (newValue) => {
+        if (newValue) {
+            activeGenreId.value = parseInt(newValue.toString());
         }
     }
 );

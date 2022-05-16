@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage.vue";
 import LikedSongs from "../pages/LikedSongs.vue";
 import AlbumPage from "../pages/AlbumPage.vue";
 import LibraryPage from "../pages/LibraryPage.vue";
+import GenrePage from "../pages/GenrePage.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -31,6 +32,11 @@ const router = createRouter({
             path: "/albums/:albumId",
             name: "albums",
             component: AlbumPage,
+        },
+        {
+            path: "/genres/:genreId",
+            name: "genres",
+            component: GenrePage,
         },
     ],
 });
