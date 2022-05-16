@@ -2,7 +2,7 @@
 import HeaderGenericVue from "@/components/Generic/HeaderGeneric.vue";
 </script>
 <template>
-    <div class="bg-gradient-to-b from-orange-800 to-background">
+    <div class="bg-gradient-to-b from-sky-700 to-background">
         <HeaderGenericVue />
         <span class="p-4 text-xl font-bold">Your Library</span>
         <p class="p-4 text-lg font-light">

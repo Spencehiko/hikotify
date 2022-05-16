@@ -41,6 +41,7 @@ export const useStore = defineStore({
         alertMessage: "" as string,
         activeAlbumId: 0 as number,
         timeOut: 0 as number,
+        homePageBackground: "primary" as string,
     }),
     getters: {
         albumsOfArtist(artistId): Album[] {
