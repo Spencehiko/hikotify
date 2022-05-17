@@ -4,6 +4,7 @@ import LikedSongs from "../pages/LikedSongs.vue";
 import AlbumPage from "../pages/AlbumPage.vue";
 import LibraryPage from "../pages/LibraryPage.vue";
 import GenrePage from "../pages/GenrePage.vue";
+import SearchPage from "../pages/SearchPage.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -16,7 +17,7 @@ const router = createRouter({
         {
             path: "/search",
             name: "search",
-            component: HomePage,
+            component: SearchPage,
         },
         {
             path: "/collection",
