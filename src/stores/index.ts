@@ -57,6 +57,7 @@ export const useStore = defineStore({
         homePageBackground: "primary" as string,
         songSeconds: 0 as number,
         volume: 50 as number,
+        lastVolume: 0 as number,
     }),
     getters: {
         albumsOfArtist(artistId): Album[] {
@@ -204,6 +205,14 @@ export const useStore = defineStore({
             } else {
                 this.activeSongId = songId;
                 this.isSongPlaying = true;
+            }
+        },
+        toggleVolume(): void {
+            if (this.volume === 0) {
+                this.volume = this.lastVolume;
+            } else {
+                this.lastVolume = this.volume;
+                this.volume = 0;
             }
         },
         nextSong(): void {

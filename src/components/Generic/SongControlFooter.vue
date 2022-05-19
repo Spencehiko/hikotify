@@ -4,7 +4,7 @@ import { useStore } from "@/stores/index";
 
 const store = useStore();
 const { activeSong, volume, isSongPlaying, songSeconds } = storeToRefs(store);
-const { revertLike, prevSong, nextSong, toggleSong } = store;
+const { revertLike, prevSong, nextSong, toggleSong, toggleVolume } = store;
 </script>
 <template>
     <div
@@ -46,14 +46,30 @@ const { revertLike, prevSong, nextSong, toggleSong } = store;
             </div>
             <input
                 type="range"
-                class="appearance-none w-3/4 h-0.5 bg-white accent-gray-300 rounded outline-none slider-thumb mt-4 hover:accent-white"
+                class="w-3/4 h-0.5 bg-white accent-gray-300 rounded outline-none slider-thumb mt-4 cursor-pointer hover:accent-primary-normal"
                 min="0"
                 max="100"
                 v-model="songSeconds"
             />
         </div>
-        <div class="ml-auto my-auto items-center basis-1/4">
-            <input type="range" min="0" max="100" step="1" v-model="volume" />
+        <div
+            class="ml-auto my-auto items-center basis-1/4 flex flex-row justify-end"
+        >
+            <button @click="toggleVolume">
+                <img
+                    :src="volume === 0 ? 'muted.png' : 'volume.png'"
+                    alt="Volume"
+                    class="w-8 h-8 p-1 mr-2"
+                />
+            </button>
+            <input
+                type="range"
+                class="w-1/2 h-1 bg-white accent-gray-300 rounded outline-none slider-thumb text-right cursor-pointer hover:accent-primary-normal"
+                min="0"
+                max="100"
+                step="1"
+                v-model="volume"
+            />
         </div>
     </div>
 </template>

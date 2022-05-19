@@ -17,6 +17,7 @@ watch(
     () => route.params.albumId,
     (newValue) => {
         if (newValue) {
+            activeGenreId.value = 0;
             activeAlbumId.value = parseInt(newValue.toString());
         }
     }
@@ -25,6 +26,7 @@ watch(
     () => route.params.genreId,
     (newValue) => {
         if (newValue) {
+            activeAlbumId.value = 0;
             activeGenreId.value = parseInt(newValue.toString());
         }
     }
