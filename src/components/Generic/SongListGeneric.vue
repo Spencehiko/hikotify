@@ -17,8 +17,8 @@ interface Song {
 }
 
 const store = useStore();
-const { sortBy, searchBy } = storeToRefs(store);
-const { convertDuration, revertLike } = store;
+const { sortBy, searchBy, isSongPlaying, activeSongId } = storeToRefs(store);
+const { convertDuration, revertLike, toggleSong } = store;
 
 const props = defineProps<{
     songs: Song[];
@@ -61,8 +61,17 @@ const { songs } = toRefs(props);
                 >
                     <td class="text-left pl-5 w-11">
                         <span class="group-hover:hidden">{{ index + 1 }}</span>
-                        <button class="hidden group-hover:block">
-                            <img src="play.png" alt="Play" class="w-4" />
+                        <button
+                            class="hidden group-hover:block"
+                            @click="toggleSong(song.id)"
+                        >
+                            <img
+                                src="stop.png"
+                                alt="Stop"
+                                class="w-4"
+                                v-if="isSongPlaying && activeSongId === song.id"
+                            />
+                            <img src="play.png" alt="Play" class="w-4" v-else />
                         </button>
                     </td>
                     <td class="flex flex-row items-center py-2">

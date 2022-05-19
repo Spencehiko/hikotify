@@ -13,8 +13,8 @@ module.exports = {
                 },
                 background: "#121212",
                 gray: {
-                    darkest: "rgba(0, 0, 0, 0.8)",
-                    dark: "rgba(31, 31, 31, 0.8)",
+                    darkest: "#333",
+                    dark: "#232323",
                     light: "#282828",
                     lightest: "rgba(255,255,255,.1)",
                 },
@@ -32,6 +32,9 @@ module.exports = {
             gridTemplateColumns: {
                 library:
                     "repeat(auto-fit, minmax(min(100%/3, max(128px, 100%/6)), 1fr))",
+            },
+            minWidth: {
+                300: "300px",
             },
         },
     },

@@ -51,8 +51,12 @@ export const useStore = defineStore({
         alertMessage: "" as string,
         activeAlbumId: 0 as number,
         activeGenreId: 0 as number,
+        activeSongId: 0 as number,
+        isSongPlaying: false as boolean,
         timeOut: 0 as number,
         homePageBackground: "primary" as string,
+        songSeconds: 0 as number,
+        volume: 50 as number,
     }),
     getters: {
         albumsOfArtist(artistId): Album[] {
@@ -129,6 +133,12 @@ export const useStore = defineStore({
                 song.genres.includes(this.activeGenreId)
             );
         },
+        activeSong(): Song {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            return (this as any).songsWithAlbumName.find(
+                (song: Song) => song.id === this.activeSongId
+            );
+        },
     },
     actions: {
         getAlbumName(albumId: number): string {
@@ -184,6 +194,41 @@ export const useStore = defineStore({
             this.timeOut = setTimeout(() => {
                 this.alertMessage = "";
             }, duration);
+        },
+        toggleSong(songId: number): void {
+            if (this.isSongPlaying && this.activeSongId === songId) {
+                this.isSongPlaying = !this.isSongPlaying;
+            } else if (this.isSongPlaying && this.activeSongId !== songId) {
+                this.songSeconds = 0;
+                this.activeSongId = songId;
+            } else {
+                this.activeSongId = songId;
+                this.isSongPlaying = true;
+            }
+        },
+        nextSong(): void {
+            const index = this.songs.findIndex(
+                (song: Song) => song.id === this.activeSongId
+            );
+            if (index === this.songs.length - 1) {
+                this.songSeconds = 0;
+                this.activeSongId = this.songs[0].id;
+            } else {
+                this.songSeconds = 0;
+                this.activeSongId = this.songs[index + 1].id;
+            }
+        },
+        prevSong(): void {
+            const index = this.songs.findIndex(
+                (song: Song) => song.id === this.activeSongId
+            );
+            if (index === 0) {
+                this.songSeconds = 0;
+                this.activeSongId = this.songs[this.songs.length - 1].id;
+            } else {
+                this.songSeconds = 0;
+                this.activeSongId = this.songs[index - 1].id;
+            }
         },
     },
     persist: true,

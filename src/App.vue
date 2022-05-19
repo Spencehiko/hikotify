@@ -2,6 +2,8 @@
 import { RouterView } from "vue-router";
 import SideMenuVue from "@/components/Menus/SideMenu.vue";
 import AlertGenericVue from "./components/Generic/AlertGeneric.vue";
+import SongControlFooterVue from "./components/Generic/SongControlFooter.vue";
+
 import { useRoute } from "vue-router";
 import { watch } from "vue";
 import { storeToRefs } from "pinia";
@@ -10,7 +12,7 @@ import { useStore } from "@/stores/index";
 const route = useRoute();
 
 const store = useStore();
-const { activeAlbumId, activeGenreId } = storeToRefs(store);
+const { activeAlbumId, activeGenreId, activeSongId } = storeToRefs(store);
 watch(
     () => route.params.albumId,
     (newValue) => {
@@ -32,7 +34,8 @@ watch(
 <template>
     <div class="flex flex-row text-white">
         <SideMenuVue />
-        <RouterView class="bg-background min-h-screen text-base" />
+        <RouterView class="bg-background min-h-screen text-base pb-20" />
         <AlertGenericVue />
+        <SongControlFooterVue v-if="activeSongId !== 0" />
     </div>
 </template>
