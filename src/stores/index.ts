@@ -200,20 +200,22 @@ export const useStore = defineStore({
             if (this.isSongPlaying && this.activeSongId === songId) {
                 this.isSongPlaying = !this.isSongPlaying;
             } else if (this.isSongPlaying && this.activeSongId !== songId) {
-                this.songSeconds = 0;
                 this.activeSongId = songId;
+            } else if (!this.isSongPlaying && this.activeSongId == songId) {
+                this.isSongPlaying = true;
             } else {
                 this.activeSongId = songId;
                 this.isSongPlaying = true;
             }
         },
-        toggleVolume(): void {
-            if (this.volume === 0) {
+        toggleVolume(): number {
+            if (this.volume == 0) {
                 this.volume = this.lastVolume;
-            } else {
-                this.lastVolume = this.volume;
-                this.volume = 0;
+                return this.volume;
             }
+            this.lastVolume = this.volume;
+            this.volume = 0;
+            return this.volume;
         },
         nextSong(): number {
             const index = this.songs.findIndex(

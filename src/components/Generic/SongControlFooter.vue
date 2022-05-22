@@ -1,23 +1,47 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores/index";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 
 let audioElement: HTMLAudioElement;
 /* MOUNTED */
 onMounted(() => {
     audioElement = document.getElementById("audio") as HTMLAudioElement;
+    audioElement.onloadeddata = () => {
+        audioElement.currentTime = Math.floor(
+            (songSeconds.value * audioElement.duration) / 100
+        );
+    };
+    audioElement.ontimeupdate = () => {
+        songSeconds.value =
+            (audioElement.currentTime * 100) / audioElement.duration;
+    };
+    audioElement.volume = volume.value / 100;
+    if (isSongPlaying.value) {
+        isSongPlaying.value = false;
+    }
+    /* WATCH */
+    watch(
+        () => volume?.value,
+        (newVal, oldVal) => {
+            audioElement.volume = newVal / 100;
+            lastVolume.value = oldVal < 20 ? 20 : oldVal;
+        }
+    );
 });
-
 const store = useStore();
-const { activeSong, volume, isSongPlaying, songSeconds } = storeToRefs(store);
+const { activeSong, volume, lastVolume, isSongPlaying, songSeconds } =
+    storeToRefs(store);
 const { revertLike, prevSong, nextSong, toggleSong, toggleVolume } = store;
 
+const toggleVolumePlay = () => {
+    audioElement.volume = toggleVolume() / 100;
+};
 const toggleSongPlay = (songId: number) => {
     audioElement.pause();
     if (!isSongPlaying.value) {
-        audioElement.play();
         toggleSong(songId);
+        audioElement.play();
     } else {
         isSongPlaying.value = false;
     }
@@ -34,6 +58,16 @@ const nextSongPlay = () => {
     };
     toggleSong(nextSong());
 };
+const resumePlaying = () => {
+    audioElement.currentTime =
+        (songSeconds.value / 100) * audioElement.duration;
+    audioElement.play();
+    isSongPlaying.value = true;
+};
+// const pausePlaying = () => {
+//     audioElement.pause();
+//     isSongPlaying.value = false;
+// };
 </script>
 <template>
     <audio
@@ -84,18 +118,20 @@ const nextSongPlay = () => {
             </div>
             <input
                 type="range"
-                class="w-3/4 h-0.5 bg-white accent-gray-300 rounded outline-none slider-thumb mt-4 cursor-pointer hover:accent-primary-normal"
+                class="w-3/4 h-1.5 bg-white accent-gray-300 rounded outline-none slider-thumb mt-4 cursor-pointer hover:accent-primary-normal"
                 min="0"
                 max="100"
+                step=".01"
+                @input="resumePlaying"
                 v-model="songSeconds"
             />
         </div>
         <div
             class="ml-auto my-auto items-center basis-1/4 flex flex-row justify-end"
         >
-            <button @click="toggleVolume">
+            <button @click="toggleVolumePlay">
                 <img
-                    :src="volume === 0 ? 'muted.png' : 'volume.png'"
+                    :src="volume == 0 ? 'muted.png' : 'volume.png'"
                     alt="Volume"
                     class="w-8 h-8 p-1 mr-2"
                 />
@@ -105,7 +141,7 @@ const nextSongPlay = () => {
                 class="w-1/2 h-1 bg-white accent-gray-300 rounded outline-none slider-thumb text-right cursor-pointer hover:accent-primary-normal"
                 min="0"
                 max="100"
-                step="1"
+                step="0.01"
                 v-model="volume"
             />
         </div>
