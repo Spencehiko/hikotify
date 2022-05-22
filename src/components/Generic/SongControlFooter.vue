@@ -8,13 +8,18 @@ let audioElement: HTMLAudioElement;
 onMounted(() => {
     audioElement = document.getElementById("audio") as HTMLAudioElement;
     audioElement.onloadeddata = () => {
-        audioElement.currentTime = Math.floor(
-            (songSeconds.value * audioElement.duration) / 100
-        );
+        audioElement.currentTime =
+            !isNaN(audioElement.duration) && !isNaN(songSeconds.value)
+                ? Math.floor((songSeconds.value * audioElement.duration) / 100)
+                : 0;
+        audioElement.play();
     };
     audioElement.ontimeupdate = () => {
-        songSeconds.value =
-            (audioElement.currentTime * 100) / audioElement.duration;
+        songSeconds.value = isNaN(
+            (audioElement.currentTime * 100) / audioElement.duration
+        )
+            ? 0
+            : (audioElement.currentTime * 100) / audioElement.duration;
     };
     audioElement.volume = volume.value / 100;
     if (isSongPlaying.value) {
@@ -26,6 +31,16 @@ onMounted(() => {
         (newVal, oldVal) => {
             audioElement.volume = newVal / 100;
             lastVolume.value = oldVal < 20 ? 20 : oldVal;
+        }
+    );
+    watch(
+        () => isSongPlaying.value,
+        (newVal) => {
+            if (newVal) {
+                audioElement.play();
+            } else {
+                audioElement.pause();
+            }
         }
     );
 });
