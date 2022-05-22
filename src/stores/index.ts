@@ -226,6 +226,7 @@ export const useStore = defineStore({
                 this.songSeconds = 0;
                 this.activeSongId = this.songs[index + 1].id;
             }
+            this.isSongPlaying = true;
         },
         prevSong(): void {
             const index = this.songs.findIndex(
@@ -238,6 +239,7 @@ export const useStore = defineStore({
                 this.songSeconds = 0;
                 this.activeSongId = this.songs[index - 1].id;
             }
+            this.isSongPlaying = true;
         },
     },
     persist: true,
