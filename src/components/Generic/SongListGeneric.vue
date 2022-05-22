@@ -20,6 +20,7 @@ const store = useStore();
 const { sortBy, searchBy, isSongPlaying, activeSongId } = storeToRefs(store);
 const { convertDuration, revertLike, toggleSong } = store;
 
+/* PROPS */
 const props = defineProps<{
     songs: Song[];
 }>();

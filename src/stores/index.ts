@@ -215,7 +215,7 @@ export const useStore = defineStore({
                 this.volume = 0;
             }
         },
-        nextSong(): void {
+        nextSong(): number {
             const index = this.songs.findIndex(
                 (song: Song) => song.id === this.activeSongId
             );
@@ -226,9 +226,10 @@ export const useStore = defineStore({
                 this.songSeconds = 0;
                 this.activeSongId = this.songs[index + 1].id;
             }
-            this.isSongPlaying = true;
+            this.isSongPlaying = false;
+            return this.activeSongId;
         },
-        prevSong(): void {
+        prevSong(): number {
             const index = this.songs.findIndex(
                 (song: Song) => song.id === this.activeSongId
             );
@@ -239,7 +240,8 @@ export const useStore = defineStore({
                 this.songSeconds = 0;
                 this.activeSongId = this.songs[index - 1].id;
             }
-            this.isSongPlaying = true;
+            this.isSongPlaying = false;
+            return this.activeSongId;
         },
     },
     persist: true,

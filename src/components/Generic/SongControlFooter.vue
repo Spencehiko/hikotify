@@ -3,33 +3,36 @@ import { storeToRefs } from "pinia";
 import { useStore } from "@/stores/index";
 import { onMounted } from "vue";
 
-const store = useStore();
-const { activeSong, volume, isSongPlaying, songSeconds } = storeToRefs(store);
-const { revertLike, prevSong, nextSong, toggleSong, toggleVolume } = store;
 let audioElement: HTMLAudioElement;
+/* MOUNTED */
 onMounted(() => {
-    console.log("mounted");
     audioElement = document.getElementById("audio") as HTMLAudioElement;
 });
 
+const store = useStore();
+const { activeSong, volume, isSongPlaying, songSeconds } = storeToRefs(store);
+const { revertLike, prevSong, nextSong, toggleSong, toggleVolume } = store;
+
 const toggleSongPlay = (songId: number) => {
-    toggleSong(songId);
-    if (isSongPlaying.value) {
+    audioElement.pause();
+    if (!isSongPlaying.value) {
         audioElement.play();
+        toggleSong(songId);
     } else {
-        audioElement.pause();
+        isSongPlaying.value = false;
     }
 };
-
 const prevSongPlay = () => {
-    prevSong();
-    audioElement.pause();
-    audioElement.play();
+    audioElement.onloadeddata = () => {
+        audioElement.play();
+    };
+    toggleSong(prevSong());
 };
 const nextSongPlay = () => {
-    nextSong();
-    audioElement.pause();
-    audioElement.play();
+    audioElement.onloadeddata = () => {
+        audioElement.play();
+    };
+    toggleSong(nextSong());
 };
 </script>
 <template>
@@ -38,7 +41,6 @@ const nextSongPlay = () => {
         ref="audio"
         :src="'songs/' + activeSong.songPath"
         preload="auto"
-        autoplay
         :onended="nextSongPlay"
     >
         <p>Your browser does not support the <code>audio</code> element.</p>
