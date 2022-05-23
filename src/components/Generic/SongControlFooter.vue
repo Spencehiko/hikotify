@@ -6,25 +6,6 @@ import { onMounted, watch } from "vue";
 let audioElement: HTMLAudioElement;
 /* MOUNTED */
 onMounted(() => {
-    audioElement = document.getElementById("audio") as HTMLAudioElement;
-    audioElement.onloadeddata = () => {
-        audioElement.currentTime =
-            !isNaN(audioElement.duration) && !isNaN(songSeconds.value)
-                ? Math.floor((songSeconds.value * audioElement.duration) / 100)
-                : 0;
-        audioElement.play();
-    };
-    audioElement.ontimeupdate = () => {
-        songSeconds.value = isNaN(
-            (audioElement.currentTime * 100) / audioElement.duration
-        )
-            ? 0
-            : (audioElement.currentTime * 100) / audioElement.duration;
-    };
-    audioElement.volume = volume.value / 100;
-    if (isSongPlaying.value) {
-        isSongPlaying.value = false;
-    }
     /* WATCH */
     watch(
         () => volume?.value,
@@ -43,10 +24,43 @@ onMounted(() => {
             }
         }
     );
+    watch(
+        () => activeSongId.value,
+        () => {
+            audioElement.onloadeddata = () => {
+                audioElement.currentTime = 0;
+                audioElement.play();
+            };
+        }
+    );
+    audioElement = document.getElementById("audio") as HTMLAudioElement;
+    audioElement.onloadeddata = () => {
+        audioElement.currentTime =
+            !isNaN(audioElement.duration) && !isNaN(songSeconds.value)
+                ? Math.floor((songSeconds.value * audioElement.duration) / 100)
+                : 0;
+        if (isSongPlaying.value) {
+            audioElement.play();
+        }
+    };
+    audioElement.ontimeupdate = () => {
+        songSeconds.value = isNaN(
+            (audioElement.currentTime * 100) / audioElement.duration
+        )
+            ? 0
+            : (audioElement.currentTime * 100) / audioElement.duration;
+    };
+    audioElement.volume = volume.value / 100;
 });
 const store = useStore();
-const { activeSong, volume, lastVolume, isSongPlaying, songSeconds } =
-    storeToRefs(store);
+const {
+    activeSong,
+    activeSongId,
+    volume,
+    lastVolume,
+    isSongPlaying,
+    songSeconds,
+} = storeToRefs(store);
 const { revertLike, prevSong, nextSong, toggleSong, toggleVolume } = store;
 
 const toggleVolumePlay = () => {
@@ -118,17 +132,25 @@ const resumePlaying = () => {
         <div class="flex flex-col items-center basis-1/2">
             <div class="flex flex-row justify-evenly w-full">
                 <button @click="prevSongPlay">
-                    <img src="prev.png" alt="Prev" class="w-8 h-8 p-1" />
+                    <img
+                        src="@/assets/prev.png"
+                        alt="Prev"
+                        class="w-8 h-8 p-1"
+                    />
                 </button>
                 <button @click="toggleSongPlay(activeSong.id)">
                     <img
-                        :src="isSongPlaying ? 'stop.png' : 'play.png'"
+                        :src="isSongPlaying ? './stop.png' : './play.png'"
                         alt="Play"
                         class="w-8 h-8 p-1"
                     />
                 </button>
                 <button @click="nextSongPlay">
-                    <img src="next.png" alt="Next" class="w-8 h-8 p-1" />
+                    <img
+                        src="@/assets/next.png"
+                        alt="Next"
+                        class="w-8 h-8 p-1"
+                    />
                 </button>
             </div>
             <input

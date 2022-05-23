@@ -41,7 +41,11 @@ const colors: any = {
                 @mouseover="homePageBackground = 'blue'"
                 @mouseleave="homePageBackground = 'primary'"
             >
-                <img src="liked.png" alt="Liked" class="rounded w-24 h-24" />
+                <img
+                    src="@/assets/liked.png"
+                    alt="Liked"
+                    class="rounded w-24 h-24"
+                />
                 <span class="font-bold ml-1 p-1">Liked Songs</span>
             </router-link>
             <router-link

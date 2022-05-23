@@ -12,7 +12,8 @@ import { useStore } from "@/stores/index";
 const route = useRoute();
 
 const store = useStore();
-const { activeAlbumId, activeGenreId, activeSongId } = storeToRefs(store);
+const { activeAlbumId, activeGenreId, activeSongId, isSongPlaying } =
+    storeToRefs(store);
 watch(
     () => route.params.albumId,
     (newValue) => {
@@ -31,6 +32,10 @@ watch(
         }
     }
 );
+
+window.addEventListener("beforeunload", () => {
+    isSongPlaying.value = false;
+});
 </script>
 
 <template>

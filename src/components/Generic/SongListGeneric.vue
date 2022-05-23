@@ -67,12 +67,17 @@ const { songs } = toRefs(props);
                             @click="toggleSong(song.id)"
                         >
                             <img
-                                src="stop.png"
+                                src="@/assets/stop.png"
                                 alt="Stop"
                                 class="w-4"
                                 v-if="isSongPlaying && activeSongId === song.id"
                             />
-                            <img src="play.png" alt="Play" class="w-4" v-else />
+                            <img
+                                src="@/assets/play.png"
+                                alt="Play"
+                                class="w-4"
+                                v-else
+                            />
                         </button>
                     </td>
                     <td class="flex flex-row items-center py-2">

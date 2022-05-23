@@ -13,7 +13,7 @@ let route = ref(useRoute());
     <div class="w-48 min-h-screen bg-black">
         <router-link to="/">
             <img
-                src="hikotify-wide.png"
+                src="@/assets/hikotify-wide.png"
                 class="mx-auto w-full mb-5 p-2"
                 alt="Logo"
             />
@@ -54,7 +54,7 @@ let route = ref(useRoute());
             >
                 <div class="flex justify-start w-full items-center">
                     <img
-                        src="liked.png"
+                        src="@/assets/liked.png"
                         alt="Liked"
                         class="inline-block w-10 h-10 mr-3"
                     />
