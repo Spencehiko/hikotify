@@ -1,59 +1,23 @@
 # hikotify
+**Live Demo:  [Hikotify](http://hikotify.hicaku.com/)**
 
-This template should help get you started developing with Vue 3 in Vite.
+**Tech Stack: Vue 3 Composition API, Pinia, Tailwind CSS**
 
-## Recommended IDE Setup
+Hi! I developed a music app to listen to some musics that I like. I developed the app based on Spotify's UI/UX. Everything you see inside is written by me (including audio controller). 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+If you want to try it out you can simply click **Code > Copy Icon** and go to your Terminal/Cmd etc.
 
-## Type Support for `.vue` Imports in TS
+    git clone THIS_REPOSITORY_LINK
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+After cloning is finished, you **must** install the npm in order to run.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+    npm install
+    
+Then, you are ready to give it a shot! Just type
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+    npm run serve
+and you will see the project in your browser!
 
-## Customize configuration
+![image](https://user-images.githubusercontent.com/40501852/169838645-773cb718-afe3-490e-986b-9dc188aae762.png)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+![image](https://user-images.githubusercontent.com/40501852/169838763-1232e59c-5875-4dd6-8e3d-37f206af7a3e.png)
