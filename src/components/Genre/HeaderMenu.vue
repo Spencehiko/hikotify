@@ -26,7 +26,7 @@ const colors: any = {
             <img
                 :src="activeGenre.image"
                 alt="Liked"
-                class="rounded w-60 h-60"
+                class="rounded w-40 h-40 xs:w-60 xs:h-60"
             />
             <div class="flex flex-col justify-end">
                 <span class="font-bold text-lg">Genre</span>

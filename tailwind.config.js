@@ -2,6 +2,9 @@ module.exports = {
     content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
     theme: {
         extend: {
+            screens: {
+                xs: "475px",
+            },
             colors: {
                 primary: {
                     normal: "#1DB954",
@@ -35,6 +38,7 @@ module.exports = {
             },
             minWidth: {
                 300: "300px",
+                60: "60px",
             },
         },
     },

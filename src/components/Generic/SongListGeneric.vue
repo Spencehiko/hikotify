@@ -27,16 +27,16 @@ const props = defineProps<{
 const { songs } = toRefs(props);
 </script>
 <template>
-    <div class="m-16">
-        <div class="flex flex-row px-5">
+    <div class="m-4 sm:m-16">
+        <div class="flex flex-row xs:px-5">
             <input
-                class="border-2 border-gray-200 rounded-lg p-2 text-black outline-none"
+                class="border-2 border-gray-200 rounded-lg text-black outline-none w-full min-w-60 xs:p-2"
                 type="text"
                 placeholder="Search"
                 v-model="searchBy"
             />
             <select
-                class="border-2 border-gray-200 rounded-lg p-2 ml-2 text-black outline-none"
+                class="border-2 border-gray-200 rounded-lg ml-2 text-black outline-none w-full min-w-60 xs:p-2"
                 v-model="sortBy"
             >
                 <option value="title">TITLE</option>
@@ -47,11 +47,13 @@ const { songs } = toRefs(props);
         <table class="w-full mt-5">
             <thead>
                 <tr>
-                    <th class="text-left pl-5">#</th>
+                    <th class="text-left hidden xs:table-cell xs:pl-5">#</th>
                     <th class="text-left">TITLE</th>
-                    <th class="text-left">ALBUM</th>
+                    <th class="text-left hidden xs:table-cell">ALBUM</th>
                     <th class="text-left"></th>
-                    <th class="text-right pr-5">DURATION</th>
+                    <th class="text-right pr-5 hidden sm:table-cell">
+                        DURATION
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -60,7 +62,7 @@ const { songs } = toRefs(props);
                     :key="song.id"
                     class="group hover:bg-gray-light transition-all duration-200"
                 >
-                    <td class="text-left pl-5 w-11">
+                    <td class="text-left w-11 hidden xs:table-cell xs:pl-5">
                         <span class="group-hover:hidden">{{ index + 1 }}</span>
                         <button
                             class="hidden group-hover:block"
@@ -93,7 +95,7 @@ const { songs } = toRefs(props);
                             }}</span>
                         </div>
                     </td>
-                    <td class="text-left">
+                    <td class="text-left hidden xs:table-cell">
                         {{ song.albumName }}
                     </td>
                     <td>
@@ -108,7 +110,7 @@ const { songs } = toRefs(props);
                             />
                         </button>
                     </td>
-                    <td class="text-right pr-5">
+                    <td class="text-right pr-5 hidden sm:table-cell">
                         {{ convertDuration(song.duration) }}
                     </td>
                 </tr>

@@ -10,7 +10,7 @@ const { albums } = store;
 let route = ref(useRoute());
 </script>
 <template>
-    <div class="w-48 min-h-screen bg-black">
+    <div class="w-40 min-h-screen bg-black pb-28">
         <router-link to="/">
             <img
                 src="@/assets/hikotify-wide.png"
