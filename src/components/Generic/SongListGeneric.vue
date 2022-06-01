@@ -60,7 +60,8 @@ const { songs } = toRefs(props);
                 <tr
                     v-for="(song, index) in songs"
                     :key="song.id"
-                    class="group hover:bg-gray-light transition-all duration-200"
+                    class="cursor-pointer group transition-all duration-200 hover:bg-gray-light"
+                    @click="toggleSong(song.id)"
                 >
                     <td class="text-left w-11 hidden xs:table-cell xs:pl-5">
                         <span class="group-hover:hidden">{{ index + 1 }}</span>
