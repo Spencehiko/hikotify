@@ -30,13 +30,13 @@ const { songs } = toRefs(props);
     <div class="m-4 sm:m-16">
         <div class="flex flex-row xs:px-5">
             <input
-                class="border-2 border-gray-200 rounded-lg text-black outline-none w-full min-w-60 xs:p-2"
+                class="border-2 border-gray-200 rounded-lg text-black outline-none w-full min-w-60 max-w-xs xs:p-2"
                 type="text"
                 placeholder="Search"
                 v-model="searchBy"
             />
             <select
-                class="border-2 border-gray-200 rounded-lg ml-2 text-black outline-none w-full min-w-60 xs:p-2"
+                class="border-2 border-gray-200 rounded-lg ml-2 text-black outline-none w-full min-w-60 max-w-xs xs:p-2"
                 v-model="sortBy"
             >
                 <option value="title">TITLE</option>
